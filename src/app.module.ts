@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MoviesModule } from './movies/movies.module';
 import { PlatformsModule } from './platforms/platforms.module';
-import { ReviewModule } from './review/review.module';
+import { ReviewModule } from './reviews/reviews.module';
 
 @Module({
   imports: [MoviesModule, PlatformsModule, ReviewModule],
