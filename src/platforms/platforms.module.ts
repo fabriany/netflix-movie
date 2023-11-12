@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PlatformsController } from './platforms.controller';
-import { PlatformsService } from './platforms.service';
+import { PlatformsController } from './controllers/platforms.controller';
+import { PlatformsService } from './services/platforms.service';
 
 @Module({
   controllers: [PlatformsController],
