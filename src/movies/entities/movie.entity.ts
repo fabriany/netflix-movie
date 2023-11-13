@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { Document } from 'mongoose'
+import { Document, Types } from 'mongoose'
 
-import { Platform } from '../../platforms/entities/platform.entity'
-import { Review } from '../../reviews/entities/review.entity'
+import { Platform } from './platform.entity'
+import { Review } from './review.entity'
 
 
 @Schema()
@@ -19,8 +19,8 @@ export class Movie extends Document{
 	@Prop()
     director: string;
 
-	@Prop({type: Array})
-	platforms: Platform[];
+	@Prop({type: [Platform]})
+	platforms: Types.Array<Platform>;
 
 	@Prop({type: Number})
 	score: number;
@@ -31,8 +31,8 @@ export class Movie extends Document{
 	@Prop({type: Date})
     updatedAt: Date;
 
-	@Prop({type: Array})
-	reviews: Review[];
+	@Prop({type: [Review]})
+	reviews: Types.Array<Review>;
 }
 
 export const MovieSchema =  SchemaFactory.createForClass(Movie);

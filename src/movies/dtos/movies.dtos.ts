@@ -1,6 +1,14 @@
-import { Platform } from '../../platforms/entities/platform.entity'
-import { Review } from '../../reviews/entities/review.entity'
-import { IsString, IsNumber, IsUrl, IsNotEmpty, IsDate } from 'class-validator'
+import { CreatePlatformDto } from './platforms.dtos'
+import { CreateReviewDto } from './reviews.dtos'
+
+import { IsString, 
+		 IsNumber, 
+		 IsOptional,
+		 IsNotEmpty, 
+		 IsDate,
+		 IsPositive,
+		 Min,
+		 ValidateNested } from 'class-validator'
 import { Type } from 'class-transformer';
 import { PartialType } from '@nestjs/mapped-types'
 
@@ -21,7 +29,9 @@ export class CreateMovieDto {
     readonly director: string;
 
 	@IsNotEmpty()
-	readonly platforms: Platform[];
+	@ValidateNested({ each: true })
+	@Type(() => CreatePlatformDto)
+	readonly platforms: CreatePlatformDto[];
 	
 	@IsNumber()
 	readonly score: number;
@@ -35,7 +45,19 @@ export class CreateMovieDto {
     readonly updatedAt: Date;
 
 	@IsNotEmpty()
-	readonly reviews: Review[];
+	@ValidateNested({ each: true })
+	@Type(() => CreateReviewDto)
+	readonly reviews: CreateReviewDto[];
 }
 
 export class UpdateMovieDto extends PartialType(CreateMovieDto) {}
+
+export class FilterMoviesDto {
+	@IsOptional()
+	@IsPositive()
+	limit: number;
+
+	@IsOptional()
+	@Min(0)
+	offset: number;
+}

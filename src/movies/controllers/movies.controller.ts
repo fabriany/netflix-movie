@@ -1,18 +1,28 @@
-import { Controller, Get, Param, Put, Body, Delete, Post } from '@nestjs/common';
-import { CreateMovieDto, UpdateMovieDto } from '../dtos/movies.dtos';
+import { Controller,
+         Get, 
+         Param, 
+         Put, 
+         Body, 
+         Delete, 
+         Post, 
+         Query
+        } from '@nestjs/common';
+
+import { CreateMovieDto, UpdateMovieDto, FilterMoviesDto } from '../dtos/movies.dtos';
 import { MoviesService } from '../services/movies.service'
+import { MongoIdPipe } from '../common/mongo-id.pipe'
 
 @Controller('movies')
 export class MoviesController {
     constructor(private moviesService: MoviesService) {}
     
     @Get()
-    async getAllMovies() {
-        return await this.moviesService.findAll();
+    async getAllMovies(@Query() paramas: FilterMoviesDto) {
+        return await this.moviesService.findAll(paramas);
     }
 
     @Get(':id')
-    getMovieById(@Param('id') id: string) {
+    getMovieById(@Param('id', MongoIdPipe) id: string) {
         return this.moviesService.findOne(id);
     }
 
@@ -22,12 +32,12 @@ export class MoviesController {
     }
 
     @Put(':id')
-    updateMovie(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto) {
+    updateMovie(@Param('id', MongoIdPipe) id: string, @Body() updateMovieDto: UpdateMovieDto) {
         return this.moviesService.update(id, updateMovieDto);
     }
 
     @Delete(':id')
-    deleteMovie(@Param('id') id: string) {
+    deleteMovie(@Param('id', MongoIdPipe) id: string) {
         return this.moviesService.delete(id);
     }
 }

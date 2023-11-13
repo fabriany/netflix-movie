@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 
-import { CreateMovieDto, UpdateMovieDto } from '../dtos/movies.dtos';
+import { CreateMovieDto, UpdateMovieDto, FilterMoviesDto } from '../dtos/movies.dtos';
 import { Movie } from '../entities/movie.entity'
 
 @Injectable()
@@ -11,9 +11,12 @@ export class MoviesService {
     @InjectModel(Movie.name) private movieModel: Model<Movie>
    ) {}
 
-   async findAll() {
-        const movies = await this.movieModel.find().exec();
-        return movies;
+   async findAll(paramas?: FilterMoviesDto) {
+        if (paramas) {
+            const { limit, offset } = paramas;
+            return await this.movieModel.find().skip(offset).limit(limit).exec();;
+        }
+        return await this.movieModel.find().exec();;
     }
 
     async findOne (id: string) {
