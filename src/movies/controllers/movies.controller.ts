@@ -7,27 +7,27 @@ export class MoviesController {
     constructor(private moviesService: MoviesService) {}
     
     @Get()
-    getAllMovies(): any {
-        return this.moviesService.findAll();
+    async getAllMovies() {
+        return await this.moviesService.findAll();
     }
 
     @Get(':id')
-    getMovieById(@Param('id') id: string): any {
-        return this.moviesService.findOne(+id);
+    getMovieById(@Param('id') id: string) {
+        return this.moviesService.findOne(id);
     }
 
     @Post()
-    createMovie(@Body() createMovieDto: CreateMovieDto): any {
+    createMovie(@Body() createMovieDto: CreateMovieDto) {
         return this.moviesService.create(createMovieDto);
     }
 
     @Put(':id')
-    updateMovie(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto): any {
-        return this.moviesService.update(+id, updateMovieDto);
+    updateMovie(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto) {
+        return this.moviesService.update(id, updateMovieDto);
     }
 
     @Delete(':id')
-    deleteMovie(@Param('id') id: string): any {
-        return this.moviesService.delete(+id);
+    deleteMovie(@Param('id') id: string) {
+        return this.moviesService.delete(id);
     }
 }

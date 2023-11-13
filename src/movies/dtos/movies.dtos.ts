@@ -9,10 +9,10 @@ export class CreateMovieDto {
 	@IsNotEmpty()
 	readonly title: string;
 
-	@IsUrl()
+	@IsString()
 	readonly slug: string;
 
-	@IsUrl()
+	@IsString()
 	@IsNotEmpty()
 	readonly image: string;
 
