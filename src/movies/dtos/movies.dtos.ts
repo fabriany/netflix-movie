@@ -17,7 +17,6 @@ export class CreateMovieDto {
 	@IsNotEmpty()
 	readonly title: string;
 
-	@IsString()
 	readonly slug: string;
 
 	@IsString()
@@ -33,7 +32,6 @@ export class CreateMovieDto {
 	@Type(() => CreatePlatformDto)
 	readonly platforms: CreatePlatformDto[];
 	
-	@IsNumber()
 	readonly score: number;
 
 	@IsDate()
