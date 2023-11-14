@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 
-import { CreateMovieDto, UpdateMovieDto, FilterMoviesDto } from '../dtos/movies.dtos';
+import { CreateMovieDto, UpdateMovieDto, FilterMoviesDto } from '../../../use-cases/dtos/movies.dtos';
 import { Movie } from '../entities/movie.entity'
 
 @Injectable()
@@ -28,7 +28,7 @@ export class MoviesService {
     }
 
     async create (payload: CreateMovieDto) {
-        let newMovie = await new this.movieModel(payload);
+        let newMovie = new this.movieModel(payload);
         this.transformMovie(newMovie);
         return newMovie.save();
     }

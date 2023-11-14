@@ -2,7 +2,6 @@ import { CreatePlatformDto } from './platforms.dtos'
 import { CreateReviewDto } from './reviews.dtos'
 
 import { IsString, 
-		 IsNumber, 
 		 IsOptional,
 		 IsNotEmpty, 
 		 IsDate,
@@ -42,10 +41,6 @@ export class CreateMovieDto {
 	@Type(() => Date)
     readonly updatedAt: Date;
 
-	@IsNotEmpty()
-	@ValidateNested({ each: true })
-	@Type(() => CreateReviewDto)
-	readonly reviews: CreateReviewDto[];
 }
 
 export class UpdateMovieDto extends PartialType(CreateMovieDto) {}

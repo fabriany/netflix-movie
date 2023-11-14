@@ -3,10 +3,10 @@ import { Document } from 'mongoose'
 
 @Schema()
 export class Review extends Document {
-    @Prop({type: Number})
-	movie: number;
+    @Prop({type: String})
+	movie: string;
 
-    @Prop({type: Number})
+    @Prop({type: String})
     platform: number;
 
     @Prop()

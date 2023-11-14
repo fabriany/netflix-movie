@@ -1,13 +1,17 @@
-import { IsString, IsNumber, IsUrl, IsNotEmpty, IsDate } from 'class-validator'
+import { IsString, IsNumber, IsNotEmpty, IsDate, IsMongoId} from 'class-validator'
 import { Type } from 'class-transformer';
 import { PartialType } from '@nestjs/mapped-types'
 
 export class CreateReviewDto {
     @IsNotEmpty()
-	readonly movie: number;
+    @IsString()
+    @IsMongoId()
+	readonly movie: string;
 
     @IsNotEmpty()
-    readonly platform: number;
+    @IsString()
+    @IsMongoId()
+    readonly platform: string;
 
     @IsNotEmpty()
     @IsString()
