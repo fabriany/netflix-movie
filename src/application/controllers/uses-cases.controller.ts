@@ -8,11 +8,11 @@ import { Controller,
          Query
         } from '@nestjs/common';
 
-import { CreateMovieDto, UpdateMovieDto, FilterMoviesDto } from '../dtos/movies.dtos';
+import { CreateMovieDto, UpdateMovieDto, FilterMoviesDto } from '../dtos/movies.dto';
 import { MoviesService } from '../../domain/movies/services/movies.service';
 import { UseCasesService } from '../services/use-cases.service';
 import { MongoIdPipe } from '../common/mongo-id.pipe';
-import { CreateReviewDto } from '../dtos/reviews.dtos';
+import { CreateReviewDto } from '../dtos/reviews.dto';
 
 @Controller('movies')
 export class UsesCasesController {

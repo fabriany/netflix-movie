@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Movie } from 'src/domain/movies/entities/movie.entity';
 import { MoviesService } from 'src/domain/movies/services/movies.service';
-import { CreateReviewDto } from '../dtos/reviews.dtos';
+import { CreateReviewDto } from '../dtos/reviews.dto';
 
 @Injectable()
 export class UseCasesService {
@@ -35,5 +35,4 @@ export class UseCasesService {
         delete movieObject._id;
         return this.moviesService.create(movieObject);
     }
-
 }

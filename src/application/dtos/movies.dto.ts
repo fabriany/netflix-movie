@@ -1,5 +1,4 @@
-import { CreatePlatformDto } from './platforms.dtos'
-import { CreateReviewDto } from './reviews.dtos'
+import { CreatePlatformDto } from './platforms.dto'
 
 import { IsString, 
 		 IsOptional,
@@ -9,7 +8,7 @@ import { IsString,
 		 Min,
 		 ValidateNested } from 'class-validator'
 import { Type } from 'class-transformer';
-import { PartialType } from '@nestjs/mapped-types'
+import { PartialType } from '@nestjs/swagger'
 
 export class CreateMovieDto {
 	@IsString()
