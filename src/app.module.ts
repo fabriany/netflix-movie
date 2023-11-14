@@ -5,6 +5,7 @@ import { MoviesModule } from './domain/movies/movies.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { appConfig } from './config';
+import { UseCasesModule } from './use-cases/use-cases.module';
 
 
 @Module({
@@ -13,7 +14,7 @@ import { appConfig } from './config';
     load: [appConfig]
     }),
     MoviesModule, 
-    DatabaseModule],
+    DatabaseModule, UseCasesModule],
   controllers: [AppController],
   providers: [AppService],
 })
