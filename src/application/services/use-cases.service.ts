@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Movie } from 'src/domain/movies/entities/movie.entity';
-import { MoviesService } from 'src/domain/movies/services/movies.service';
+import { MoviesService } from '../../domain/movies/services/movies.service';
 import { CreateReviewDto } from '../dtos/reviews.dto';
 
 @Injectable()

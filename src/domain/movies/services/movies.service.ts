@@ -14,9 +14,9 @@ export class MoviesService {
    async findAll(paramas?: FilterMoviesDto) {
         if (paramas) {
             const { limit, offset } = paramas;
-            return await this.movieModel.find().skip(offset).limit(limit).exec();;
+            return await this.movieModel.find().skip(offset).limit(limit).exec();
         }
-        return await this.movieModel.find().exec();;
+        return await this.movieModel.find().exec();
     }
 
     async findOne (id: string) {
