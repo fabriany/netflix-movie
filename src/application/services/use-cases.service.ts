@@ -26,7 +26,7 @@ export class UseCasesService {
     async createReview(review: CreateReviewDto) {
         let movie = await this.moviesService.findOne(review.movie);
         movie.reviews.push(review);
-        return movie.save();
+        return this.moviesService.create(movie);
     }
 
     async cloneMovie(id: string) {
