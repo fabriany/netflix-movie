@@ -24,7 +24,7 @@ DatabaseModule = __decorate([
                 inject: [config_1.appConfig.KEY],
             }),
         ],
-        exports: [mongoose_1.MongooseModule]
+        exports: [mongoose_1.MongooseModule],
     })
 ], DatabaseModule);
 exports.DatabaseModule = DatabaseModule;

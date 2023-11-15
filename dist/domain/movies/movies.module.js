@@ -17,22 +17,24 @@ let MoviesModule = class MoviesModule {
 };
 MoviesModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forFeature([
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
                 {
                     name: movie_entity_1.Movie.name,
-                    schema: movie_entity_1.MovieSchema
+                    schema: movie_entity_1.MovieSchema,
                 },
                 {
                     name: platform_entity_1.Platform.name,
-                    schema: platform_entity_1.PlatformSchema
+                    schema: platform_entity_1.PlatformSchema,
                 },
                 {
                     name: review_entity_1.Review.name,
-                    schema: review_entity_1.ReviewSchema
-                }
-            ])],
+                    schema: review_entity_1.ReviewSchema,
+                },
+            ]),
+        ],
         providers: [movies_service_1.MoviesService],
-        exports: [movies_service_1.MoviesService]
+        exports: [movies_service_1.MoviesService],
     })
 ], MoviesModule);
 exports.MoviesModule = MoviesModule;

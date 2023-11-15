@@ -19,12 +19,15 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot({
+        imports: [
+            config_1.ConfigModule.forRoot({
                 isGlobal: true,
-                load: [config_2.appConfig]
+                load: [config_2.appConfig],
             }),
             movies_module_1.MoviesModule,
-            database_module_1.DatabaseModule, application_module_1.UseCasesModule],
+            database_module_1.DatabaseModule,
+            application_module_1.UseCasesModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

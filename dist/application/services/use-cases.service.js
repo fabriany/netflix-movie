@@ -17,7 +17,7 @@ let UseCasesService = class UseCasesService {
         this.moviesService = moviesService;
     }
     async getReviewsForPlatforms(movie) {
-        let reviewsForPlatforms = {};
+        const reviewsForPlatforms = {};
         movie.reviews.forEach((review) => {
             const plataformaId = review.platform;
             if (!reviewsForPlatforms[plataformaId]) {
@@ -31,12 +31,12 @@ let UseCasesService = class UseCasesService {
         return reviewsForPlatforms;
     }
     async createReview(review) {
-        let movie = await this.moviesService.findOne(review.movie);
+        const movie = await this.moviesService.findOne(review.movie);
         movie.reviews.push(review);
         return this.moviesService.create(movie);
     }
     async cloneMovie(id) {
-        let movie = await this.moviesService.findOne(id);
+        const movie = await this.moviesService.findOne(id);
         const movieObject = movie.toObject();
         delete movieObject._id;
         return this.moviesService.create(movieObject);

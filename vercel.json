@@ -1,8 +1,8 @@
 {
   "version": 2,
   "name": "netflix-movies",
-  "buildCommand": "start:prod",
   "installCommand": "npm install",
+  "buildCommand": "start:prod",
   "builds": [
     {
       "src": "dist/main.js", 

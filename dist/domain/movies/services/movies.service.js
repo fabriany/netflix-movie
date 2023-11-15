@@ -36,7 +36,7 @@ let MoviesService = class MoviesService {
         return movie;
     }
     async create(payload) {
-        let newMovie = new this.movieModel(payload);
+        const newMovie = new this.movieModel(payload);
         this.transformMovie(newMovie);
         return newMovie.save();
     }

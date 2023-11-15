@@ -10,7 +10,7 @@ exports.MongoIdPipe = void 0;
 const common_1 = require("@nestjs/common");
 const class_validator_1 = require("class-validator");
 let MongoIdPipe = class MongoIdPipe {
-    transform(value, metadata) {
+    transform(value) {
         if (!(0, class_validator_1.isMongoId)(value)) {
             throw new common_1.BadRequestException(`${value} is not a mongoId`);
         }
