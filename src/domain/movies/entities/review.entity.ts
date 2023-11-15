@@ -1,28 +1,28 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { Document } from 'mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 @Schema()
 export class Review extends Document {
-    @Prop({type: String})
-	movie: string;
+  @Prop({ type: String })
+  movie: string;
 
-    @Prop({type: String})
-    platform: number;
+  @Prop({ type: String })
+  platform: number;
 
-    @Prop()
-    author: string
+  @Prop()
+  author: string;
 
-    @Prop()
-	body: string
+  @Prop()
+  body: string;
 
-    @Prop({type: Number})
-	score: number
+  @Prop({ type: Number })
+  score: number;
 
-    @Prop({type: Date})
-	createdAt: Date;
+  @Prop({ type: Date })
+  createdAt: Date;
 
-    @Prop({type: Date})
-    updatedAt: Date;
+  @Prop({ type: Date })
+  updatedAt: Date;
 }
 
-export const ReviewSchema =  SchemaFactory.createForClass(Review);
+export const ReviewSchema = SchemaFactory.createForClass(Review);

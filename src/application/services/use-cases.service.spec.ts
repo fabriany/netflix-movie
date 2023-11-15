@@ -1,10 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UseCasesService } from './use-cases.service';
 import { MoviesService } from '../../domain/movies/services/movies.service';
-import { CreateReviewDto } from '../dtos/reviews.dto';
 import { Movie } from '../../domain/movies/entities/movie.entity';
-import { movie } from '../common/movie.js'
-
+import { movie } from '../common/movie.js';
 
 describe('UseCasesService', () => {
   let useCasesService: UseCasesService;
@@ -18,13 +16,13 @@ describe('UseCasesService', () => {
           provide: MoviesService,
           useValue: {
             findAll: jest.fn().mockReturnThis(),
-            findOne: jest.fn().mockReturnThis(), 
+            findOne: jest.fn().mockReturnThis(),
             create: jest.fn().mockReturnThis(),
             update: jest.fn().mockReturnThis(),
             delete: jest.fn().mockReturnThis(),
             toObject: jest.fn().mockReturnThis(),
-            exec: jest.fn().mockResolvedValue(Movie), 
-          }
+            exec: jest.fn().mockResolvedValue(Movie),
+          },
         },
       ],
     }).compile();

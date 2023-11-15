@@ -6,15 +6,15 @@ import { appConfig } from '../config';
 
 @Global()
 @Module({
-    imports: [
-        MongooseModule.forRootAsync({
-            useFactory: async (configService: ConfigType<typeof appConfig>) => {
-                const { uri, user, pass, dbName } = configService.mongoConnection;
-                return { uri, user, pass, dbName }
-            },
-            inject: [appConfig.KEY],
-        }),
-    ],
-    exports: [MongooseModule]
+  imports: [
+    MongooseModule.forRootAsync({
+      useFactory: async (configService: ConfigType<typeof appConfig>) => {
+        const { uri, user, pass, dbName } = configService.mongoConnection;
+        return { uri, user, pass, dbName };
+      },
+      inject: [appConfig.KEY],
+    }),
+  ],
+  exports: [MongooseModule],
 })
 export class DatabaseModule {}

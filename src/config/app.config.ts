@@ -5,5 +5,5 @@ import { environmentConfig } from './envs.config';
  */
 export const appConfig = registerAs(
   'appConfig',
-  () => environmentConfig[process.env.NEST_ENV?.toLowerCase() || 'local']
+  () => environmentConfig[process.env.NEST_ENV?.toLowerCase() || 'local'],
 );

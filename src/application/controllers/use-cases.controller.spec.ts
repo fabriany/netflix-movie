@@ -2,17 +2,13 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UsesCasesController } from './uses-cases.controller';
 import { MoviesService } from '../../domain/movies/services/movies.service';
 import { UseCasesService } from '../services/use-cases.service';
-import { FilterMoviesDto } from '../dtos/movies.dto'
-import { movie } from '../common/movie.js'
-import { MoviesModule } from '../../domain/movies/movies.module';
-import { UseCasesModule } from '../application.module';
-
+import { FilterMoviesDto } from '../dtos/movies.dto';
+import { movie } from '../common/movie.js';
 
 describe('UsesCasesController', () => {
   let controller: UsesCasesController;
   let moviesService: MoviesService;
   let useCasesService: UseCasesService;
-
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -22,13 +18,15 @@ describe('UsesCasesController', () => {
           provide: MoviesService,
           useValue: {
             findAll: jest.fn().mockReturnThis(),
-            findOne: jest.fn().mockReturnThis(), 
+            findOne: jest.fn().mockReturnThis(),
             create: jest.fn().mockReturnThis(),
             update: jest.fn().mockReturnThis(),
             delete: jest.fn().mockReturnThis(),
-            exec: jest.fn().mockResolvedValue([]), 
-          }
-        }, UseCasesService]
+            exec: jest.fn().mockResolvedValue([]),
+          },
+        },
+        UseCasesService,
+      ],
     }).compile();
 
     controller = module.get<UsesCasesController>(UsesCasesController);
@@ -53,5 +51,4 @@ describe('UsesCasesController', () => {
       expect(await controller.getMovieById('id')).toBe(result);
     });
   });
-
 });

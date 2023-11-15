@@ -1,37 +1,43 @@
-import { IsString, IsNumber, IsNotEmpty, IsDate, IsMongoId} from 'class-validator'
+import {
+  IsString,
+  IsNumber,
+  IsNotEmpty,
+  IsDate,
+  IsMongoId,
+} from 'class-validator';
 import { Type } from 'class-transformer';
-import { PartialType } from '@nestjs/swagger'
+import { PartialType } from '@nestjs/swagger';
 
 export class CreateReviewDto {
-    @IsNotEmpty()
-    @IsString()
-    @IsMongoId()
-	readonly movie: string;
+  @IsNotEmpty()
+  @IsString()
+  @IsMongoId()
+  readonly movie: string;
 
-    @IsNotEmpty()
-    @IsString()
-    @IsMongoId()
-    readonly platform: string;
+  @IsNotEmpty()
+  @IsString()
+  @IsMongoId()
+  readonly platform: string;
 
-    @IsNotEmpty()
-    @IsString()
-    readonly author: string
+  @IsNotEmpty()
+  @IsString()
+  readonly author: string;
 
-    @IsNotEmpty()
-    @IsString()
-	readonly body: string
+  @IsNotEmpty()
+  @IsString()
+  readonly body: string;
 
-    @IsNotEmpty()
-    @IsNumber()
-	readonly score: number
+  @IsNotEmpty()
+  @IsNumber()
+  readonly score: number;
 
-    @IsDate()
-	@Type(() => Date)
-	readonly createdAt: Date;
+  @IsDate()
+  @Type(() => Date)
+  readonly createdAt: Date;
 
-    @IsDate()
-	@Type(() => Date)
-    readonly updatedAt: Date;
+  @IsDate()
+  @Type(() => Date)
+  readonly updatedAt: Date;
 }
 
 export class UpdateReviewDto extends PartialType(CreateReviewDto) {}

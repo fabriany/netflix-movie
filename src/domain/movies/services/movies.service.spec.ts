@@ -1,19 +1,15 @@
 // movies.service.spec.js
-const { Test, TestingModule } = require('@nestjs/testing');
-const { getModelToken } = require('@nestjs/mongoose');
-const mongoose = require('mongoose');
-const { MoviesService } = require('./movies.service');
-const { Movie, MovieSchema } = require('../entities/movie.entity');
-
-const mongooseMock = require('mongoose-mock');
+import { Test } from '@nestjs/testing';
+import { getModelToken } from '@nestjs/mongoose';
+import * as mongoose from 'mongoose';
+import { MoviesService } from './movies.service';
+import { Movie, MovieSchema } from '../entities/movie.entity';
 
 describe('MoviesService', () => {
   let service;
   let model;
 
   beforeAll(async () => {
-
-
     const module = await Test.createTestingModule({
       providers: [
         MoviesService,
@@ -27,7 +23,6 @@ describe('MoviesService', () => {
     service = module.get(MoviesService);
     model = module.get(getModelToken(Movie.name));
   });
-
 
   it('should be defined', () => {
     expect(service).toBeDefined();

@@ -7,14 +7,16 @@ import { ConfigModule } from '@nestjs/config';
 import { appConfig } from './config';
 import { UseCasesModule } from './application/application.module';
 
-
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    load: [appConfig]
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [appConfig],
     }),
-    MoviesModule, 
-    DatabaseModule, UseCasesModule],
+    MoviesModule,
+    DatabaseModule,
+    UseCasesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
